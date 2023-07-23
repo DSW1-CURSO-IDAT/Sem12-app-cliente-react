@@ -1,0 +1,8 @@
+@server = https://samseijuro-reimagined-system-px5vj45g7vv2r4xx-8080.preview.app.github.dev
+#####
+GET {{server}}/api/employees
+#####
+POST {{server}}/api/employees
+Content-Type: application/json
+
+{"firstName": "Mi", "lastName": "Aplicación", "description": "React"}
