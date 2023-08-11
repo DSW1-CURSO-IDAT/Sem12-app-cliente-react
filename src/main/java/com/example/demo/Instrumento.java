@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 @Entity
 public class Instrumento {
 
-
     private @Id @GeneratedValue Long id;
 	private String nombre;
 	private String categoria;
@@ -57,7 +56,7 @@ public class Instrumento {
 
 
 
-	
+
     public Long getId() {
         return id;
     }

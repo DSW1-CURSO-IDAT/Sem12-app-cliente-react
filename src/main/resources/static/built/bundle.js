@@ -34105,7 +34105,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, App);
     _this = _super.call(this, props);
     _this.state = {
-      employees: []
+      instrumentos: [],
+      musicos: []
     };
     return _this;
   }
@@ -34115,58 +34116,104 @@ var App = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
       client({
         method: 'GET',
-        path: '/api/employees'
+        path: '/api/instrumentos'
       }).done(function (response) {
         _this2.setState({
-          employees: response.entity._embedded.employees
+          instrumentos: response.entity._embedded.instrumentos
+        });
+      });
+      client({
+        method: 'GET',
+        path: '/api/musicos'
+      }).done(function (response) {
+        _this2.setState({
+          musicos: response.entity._embedded.musicos
         });
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(EmployeeList, {
-        employees: this.state.employees
-      });
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Lista de Instrumentos"), /*#__PURE__*/React.createElement(InstrumentoList, {
+        instrumentos: this.state.instrumentos
+      }), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, "Lista de Musicos"), /*#__PURE__*/React.createElement(MusicoList, {
+        musicos: this.state.musicos
+      }));
     }
   }]);
   return App;
 }(React.Component);
-var EmployeeList = /*#__PURE__*/function (_React$Component2) {
-  _inherits(EmployeeList, _React$Component2);
-  var _super2 = _createSuper(EmployeeList);
-  function EmployeeList() {
-    _classCallCheck(this, EmployeeList);
+var InstrumentoList = /*#__PURE__*/function (_React$Component2) {
+  _inherits(InstrumentoList, _React$Component2);
+  var _super2 = _createSuper(InstrumentoList);
+  function InstrumentoList() {
+    _classCallCheck(this, InstrumentoList);
     return _super2.apply(this, arguments);
   }
-  _createClass(EmployeeList, [{
+  _createClass(InstrumentoList, [{
     key: "render",
     value: function render() {
-      var employees = this.props.employees.map(function (employee) {
-        return /*#__PURE__*/React.createElement(Employee, {
-          key: employee._links.self.href,
-          employee: employee
+      var instrumentos = this.props.instrumentos.map(function (instrumento) {
+        return /*#__PURE__*/React.createElement("instrumento", {
+          key: instrumento._links.self.href,
+          instrumento: instrumento
         });
       });
-      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "First Name"), /*#__PURE__*/React.createElement("th", null, "Last Name"), /*#__PURE__*/React.createElement("th", null, "Description")), employees));
+      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("th", null, "Categoria"), /*#__PURE__*/React.createElement("th", null, "Descripcion")), instrumentos));
     }
   }]);
-  return EmployeeList;
+  return InstrumentoList;
 }(React.Component);
-var Employee = /*#__PURE__*/function (_React$Component3) {
-  _inherits(Employee, _React$Component3);
-  var _super3 = _createSuper(Employee);
-  function Employee() {
-    _classCallCheck(this, Employee);
+var MusicoList = /*#__PURE__*/function (_React$Component3) {
+  _inherits(MusicoList, _React$Component3);
+  var _super3 = _createSuper(MusicoList);
+  function MusicoList() {
+    _classCallCheck(this, MusicoList);
     return _super3.apply(this, arguments);
   }
-  _createClass(Employee, [{
+  _createClass(MusicoList, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.employee.firstName), /*#__PURE__*/React.createElement("td", null, this.props.employee.lastName), /*#__PURE__*/React.createElement("td", null, this.props.employee.description));
+      var musicos = this.props.musicos.map(function (musico) {
+        return /*#__PURE__*/React.createElement("musico", {
+          key: musico._links.self.href,
+          musico: musico
+        });
+      });
+      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre")), musicos));
     }
   }]);
-  return Employee;
+  return MusicoList;
+}(React.Component);
+var instrumento = /*#__PURE__*/function (_React$Component4) {
+  _inherits(instrumento, _React$Component4);
+  var _super4 = _createSuper(instrumento);
+  function instrumento() {
+    _classCallCheck(this, instrumento);
+    return _super4.apply(this, arguments);
+  }
+  _createClass(instrumento, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.instrumento.nombre), /*#__PURE__*/React.createElement("td", null, this.props.instrumento.categoria), /*#__PURE__*/React.createElement("td", null, this.props.instrumento.descripcion));
+    }
+  }]);
+  return instrumento;
+}(React.Component);
+var musico = /*#__PURE__*/function (_React$Component5) {
+  _inherits(musico, _React$Component5);
+  var _super5 = _createSuper(musico);
+  function musico() {
+    _classCallCheck(this, musico);
+    return _super5.apply(this, arguments);
+  }
+  _createClass(musico, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.musico.nombre));
+    }
+  }]);
+  return musico;
 }(React.Component);
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('react'));
 
