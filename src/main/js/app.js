@@ -34,6 +34,9 @@ class App extends React.Component {
 	}
 }
 
+
+
+
 class InstrumentoList extends React.Component{
 	render() {
 		const instrumentos = this.props.instrumentos.map(instrumento =>

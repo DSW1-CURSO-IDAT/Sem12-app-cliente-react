@@ -20,6 +20,8 @@ public class Musico {
 		this.nombre = nombre;
 	}
 
+	
+	
 
 	
     @Override
@@ -32,11 +34,15 @@ public class Musico {
 	}
 
 
+
+
     @Override
 	public int hashCode() {
 
 		return Objects.hash(id, nombre);
 	}
+
+
 
 
 
@@ -50,7 +56,25 @@ public class Musico {
 
 
 
+	public Long getId() {
+		return id;
+	}
 
-    
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+ 
     
 }
