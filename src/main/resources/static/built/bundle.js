@@ -34134,15 +34134,24 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Lista de Instrumentos"), /*#__PURE__*/React.createElement(InstrumentoList, {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Como es posible este suceso..!!!"), /*#__PURE__*/React.createElement("h2", null, "PIPIPIPIPIPI..!!"), /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Instrumentos",
+        emoji: "\uD83C\uDFB8"
+      }), /*#__PURE__*/React.createElement(InstrumentoList, {
         instrumentos: this.state.instrumentos
-      }), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, "Lista de Musicos"), /*#__PURE__*/React.createElement(MusicoList, {
+      }), /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Musicos",
+        emoji: "\uD83D\uDC68\u200D\uD83C\uDFA4"
+      }), /*#__PURE__*/React.createElement(MusicoList, {
         musicos: this.state.musicos
       }));
     }
   }]);
   return App;
 }(React.Component);
+var Titulo = function Titulo(props) {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, props.entidad, " - ", props.emoji), /*#__PURE__*/React.createElement("hr", null), "Lista completa de ", props.entidad.toLowerCase());
+}; // arrow function
 var InstrumentoList = /*#__PURE__*/function (_React$Component2) {
   _inherits(InstrumentoList, _React$Component2);
   var _super2 = _createSuper(InstrumentoList);
@@ -34154,7 +34163,7 @@ var InstrumentoList = /*#__PURE__*/function (_React$Component2) {
     key: "render",
     value: function render() {
       var instrumentos = this.props.instrumentos.map(function (instrumento) {
-        return /*#__PURE__*/React.createElement("instrumento", {
+        return /*#__PURE__*/React.createElement(Instrumento, {
           key: instrumento._links.self.href,
           instrumento: instrumento
         });
@@ -34175,7 +34184,7 @@ var MusicoList = /*#__PURE__*/function (_React$Component3) {
     key: "render",
     value: function render() {
       var musicos = this.props.musicos.map(function (musico) {
-        return /*#__PURE__*/React.createElement("musico", {
+        return /*#__PURE__*/React.createElement(Musico, {
           key: musico._links.self.href,
           musico: musico
         });
@@ -34185,35 +34194,35 @@ var MusicoList = /*#__PURE__*/function (_React$Component3) {
   }]);
   return MusicoList;
 }(React.Component);
-var instrumento = /*#__PURE__*/function (_React$Component4) {
-  _inherits(instrumento, _React$Component4);
-  var _super4 = _createSuper(instrumento);
-  function instrumento() {
-    _classCallCheck(this, instrumento);
+var Instrumento = /*#__PURE__*/function (_React$Component4) {
+  _inherits(Instrumento, _React$Component4);
+  var _super4 = _createSuper(Instrumento);
+  function Instrumento() {
+    _classCallCheck(this, Instrumento);
     return _super4.apply(this, arguments);
   }
-  _createClass(instrumento, [{
+  _createClass(Instrumento, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.instrumento.nombre), /*#__PURE__*/React.createElement("td", null, this.props.instrumento.categoria), /*#__PURE__*/React.createElement("td", null, this.props.instrumento.descripcion));
     }
   }]);
-  return instrumento;
+  return Instrumento;
 }(React.Component);
-var musico = /*#__PURE__*/function (_React$Component5) {
-  _inherits(musico, _React$Component5);
-  var _super5 = _createSuper(musico);
-  function musico() {
-    _classCallCheck(this, musico);
+var Musico = /*#__PURE__*/function (_React$Component5) {
+  _inherits(Musico, _React$Component5);
+  var _super5 = _createSuper(Musico);
+  function Musico() {
+    _classCallCheck(this, Musico);
     return _super5.apply(this, arguments);
   }
-  _createClass(musico, [{
+  _createClass(Musico, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.musico.nombre));
     }
   }]);
-  return musico;
+  return Musico;
 }(React.Component);
 ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById('react'));
 

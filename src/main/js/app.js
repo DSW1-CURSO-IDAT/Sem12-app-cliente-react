@@ -24,15 +24,29 @@ class App extends React.Component {
 	render() {
 		return (
 			<>
-			<h2>Lista de Instrumentos</h2>
+
+			<h1>Como es posible este suceso..!!!</h1>
+   			<h2>PIPIPIPIPIPI..!!</h2>
+			<Titulo entidad="Instrumentos" emoji="🎸"/>
 			<InstrumentoList instrumentos={this.state.instrumentos}/>
-			<hr />
-			<h2>Lista de Musicos</h2>
+			<Titulo entidad="Musicos" emoji="👨‍🎤"/>
 			<MusicoList musicos={this.state.musicos}/>
+
 			</>
 		)
 	}
 }
+
+const Titulo = (props)=>{
+	return (
+	<>
+		<hr />
+		<h2>{props.entidad} - {props.emoji}</h2>
+		<hr />
+		Lista completa de {props.entidad.toLowerCase()}
+	</>
+	)
+} // arrow function
 
 
 
@@ -40,7 +54,7 @@ class App extends React.Component {
 class InstrumentoList extends React.Component{
 	render() {
 		const instrumentos = this.props.instrumentos.map(instrumento =>
-			<instrumento key={instrumento._links.self.href} instrumento={instrumento}/>
+			<Instrumento key={instrumento._links.self.href} instrumento={instrumento}/>
 		);
 		return (
 			<table>
@@ -61,7 +75,7 @@ class InstrumentoList extends React.Component{
 class MusicoList extends React.Component{
 	render() {
 		const musicos = this.props.musicos.map(musico =>
-			<musico key={musico._links.self.href} musico={musico}/>
+			<Musico key={musico._links.self.href} musico={musico}/>
 		);
 		return (
 			<table>
@@ -77,7 +91,7 @@ class MusicoList extends React.Component{
 }
 
 
-class instrumento extends React.Component{
+class Instrumento extends React.Component{
 	render() {
 		return (
 			<tr>
@@ -89,7 +103,7 @@ class instrumento extends React.Component{
 	}
 }
 
-class musico extends React.Component{
+class Musico extends React.Component{
 	render() {
 		return (
 			<tr>
