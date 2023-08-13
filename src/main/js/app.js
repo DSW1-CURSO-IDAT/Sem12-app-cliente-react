@@ -1,116 +1,22 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const client = require('./client');
+const {createBrowserRouter, RouterProvider} = require('react-router-dom');
 
 
-class App extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {instrumentos: [], musicos: []};
-	}
-
-	componentDidMount() {
-		client({method: 'GET', path: '/api/instrumentos'}).done(response => {
-			this.setState({instrumentos: response.entity._embedded.instrumentos});
-		});
+const HomePage = require('./pages/home');
+const NuevoMusicoPage = require('./pages/nuevo-musico');
+const VerInstrumentoPage = require('./pages/ver-instrumento');
 
 
-		client({method: 'GET', path: '/api/musicos'}).done(response => {
-			this.setState({musicos: response.entity._embedded.musicos});
-		});
-	}
+const router = createBrowserRouter([
+	{path: '/', element: <HomePage />},
+	{path: '/ver-instrumento/:id', element: <VerInstrumentoPage />},
+	{path: '/nuevo-musico', element: <NuevoMusicoPage />},
 
-	render() {
-		return (
-			<>
+])
 
-			<h1>Como es posible este suceso..!!!</h1>
-   			<h2>PIPIPIPIPIPI..!!</h2>
-			<Titulo entidad="Instrumentos" emoji="🎸"/>
-			<InstrumentoList instrumentos={this.state.instrumentos}/>
-			<Titulo entidad="Musicos" emoji="👨‍🎤"/>
-			<MusicoList musicos={this.state.musicos}/>
-
-			</>
-		)
-	}
-}
-
-const Titulo = (props)=>{
-	return (
-	<>
-		<hr />
-		<h2>{props.entidad} - {props.emoji}</h2>
-		<hr />
-		Lista completa de {props.entidad.toLowerCase()}
-	</>
-	)
-} // arrow function
-
-
-
-
-class InstrumentoList extends React.Component{
-	render() {
-		const instrumentos = this.props.instrumentos.map(instrumento =>
-			<Instrumento key={instrumento._links.self.href} instrumento={instrumento}/>
-		);
-		return (
-			<table>
-				<tbody>
-					<tr>
-						<th>Nombre</th>
-						<th>Categoria</th>
-						<th>Descripcion</th>
-					</tr>
-					{instrumentos}
-				</tbody>
-			</table>
-		)
-	}
-}
-
-
-class MusicoList extends React.Component{
-	render() {
-		const musicos = this.props.musicos.map(musico =>
-			<Musico key={musico._links.self.href} musico={musico}/>
-		);
-		return (
-			<table>
-				<tbody>
-					<tr>
-						<th>Nombre</th>
-					</tr>
-					{musicos}
-				</tbody>
-			</table>
-		)
-	}
-}
-
-
-class Instrumento extends React.Component{
-	render() {
-		return (
-			<tr>
-				<td>{this.props.instrumento.nombre}</td>
-				<td>{this.props.instrumento.categoria}</td>
-				<td>{this.props.instrumento.descripcion}</td>
-			</tr>
-		)
-	}
-}
-
-class Musico extends React.Component{
-	render() {
-		return (
-			<tr>
-				<td>{this.props.musico.nombre}</td>
-			</tr>
-		)
-	}
-}
-
-ReactDOM.render(<App />, document.getElementById('react'))
+ReactDOM.render(
+				<React.StrictMode>
+					<RouterProvider router={router} />
+				</React.StrictMode>
+				, document.getElementById('react'))
