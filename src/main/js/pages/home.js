@@ -28,6 +28,7 @@ class HomePage extends React.Component {
    			<h2>PIPIPIPIPIPI..!!</h2>
 			<Titulo entidad="Instrumentos" emoji="🎸"/>
 			<InstrumentoList instrumentos={this.state.instrumentos}/>
+			<Link to="/nuevo-instrumentio">Nuevo Instrumento</Link>
 			<Titulo entidad="Musicos" emoji="👨‍🎤"/>
 			<MusicoList musicos={this.state.musicos}/>
             <Link to="/nuevo-musico">Nuevo Músico</Link>
@@ -81,6 +82,7 @@ class MusicoList extends React.Component{
 				<tbody>
 					<tr>
 						<th>Nombre</th>
+						<th>Acciones</th>
 					</tr>
 					{musicos}
 				</tbody>
@@ -110,6 +112,9 @@ class Musico extends React.Component{
 		return (
 			<tr>
 				<td>{this.props.musico.nombre}</td>
+				<td>
+					<Link to={"/ver-musico/" + id}>Ver</Link>
+				</td>
 			</tr>
 		)
 	}

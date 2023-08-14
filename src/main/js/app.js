@@ -5,13 +5,16 @@ const {createBrowserRouter, RouterProvider} = require('react-router-dom');
 
 const HomePage = require('./pages/home');
 const NuevoMusicoPage = require('./pages/nuevo-musico');
+const NuevoInstrumentoPage = require('./pages/nuevo-instrumento');
 const VerInstrumentoPage = require('./pages/ver-instrumento');
+
 
 
 const router = createBrowserRouter([
 	{path: '/', element: <HomePage />},
 	{path: '/ver-instrumento/:id', element: <VerInstrumentoPage />},
 	{path: '/nuevo-musico', element: <NuevoMusicoPage />},
+	{path: '/nuevo-instrumento', element: <NuevoInstrumentoPage />},
 
 ])
 
