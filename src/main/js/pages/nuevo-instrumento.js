@@ -5,7 +5,7 @@ const client = require('../client');
 
 
 
-const NuevoMusicoPage = () => {
+const NuevoInstrumentoPage = () => {
 
     const [nombre, setNombre] = useState('')
     const [categoria, setCategoria] = useState('')
@@ -42,4 +42,4 @@ const NuevoMusicoPage = () => {
     )
 }
 
-module.exports = NuevoMusicoPage;
+module.exports = NuevoInstrumentoPage;

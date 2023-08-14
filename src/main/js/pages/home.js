@@ -28,7 +28,7 @@ class HomePage extends React.Component {
    			<h2>PIPIPIPIPIPI..!!</h2>
 			<Titulo entidad="Instrumentos" emoji="🎸"/>
 			<InstrumentoList instrumentos={this.state.instrumentos}/>
-			<Link to="/nuevo-instrumentio">Nuevo Instrumento</Link>
+			<Link to="/nuevo-instrumento">Nuevo Instrumento</Link>
 			<Titulo entidad="Musicos" emoji="👨‍🎤"/>
 			<MusicoList musicos={this.state.musicos}/>
             <Link to="/nuevo-musico">Nuevo Músico</Link>
@@ -109,14 +109,15 @@ class Instrumento extends React.Component{
 
 class Musico extends React.Component{
 	render() {
-		return (
-			<tr>
-				<td>{this.props.musico.nombre}</td>
-				<td>
-					<Link to={"/ver-musico/" + id}>Ver</Link>
-				</td>
-			</tr>
-		)
+			const id = this.props.musico._links.self.href.split("/").slice(-1)
+			return (
+				<tr>
+					<td>{this.props.musico.nombre}</td>
+					<td>
+							<Link to={"/ver-musico/" + id}>Ver</Link>
+					</td>
+				</tr>
+			)
 	}
 }
 
